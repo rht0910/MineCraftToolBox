@@ -5,12 +5,13 @@ using System.IO.Compression;
 using System.Threading;
 using System.Windows.Forms;
 using Microsoft.VisualBasic.FileIO;
-
+using Microsoft.WindowsAPICodePack.Dialogs;
+    
 namespace MCTB
 {
-    public partial class Form1 : Form
+    public partial class Main : Form
     {
-        public Form1()
+        public Main()
         {
             InitializeComponent();
         }
@@ -26,7 +27,7 @@ namespace MCTB
             {
                 try
                 {
-                    Process.Start("http://minecraft.net/");
+                    Process.Start("https://minecraft.net/ja/");
                 }
 
                 catch(Exception)
@@ -61,9 +62,16 @@ namespace MCTB
             {
                 Process.Start("Minecraft.exe");
             }
-            catch(Exception)
+            catch
             {
-                MessageBox.Show("Minecraft.exeがありません。環境変数[path]にMinecraft.exeが存在するディレクトリを表記するか、Minecraft.exeがあるディレクトリにMCTB.exeを移動してください。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                try
+                {
+                    Process.Start("Minecraft.lnk");
+                }
+                catch (Exception exception)
+                {
+                    MessageBox.Show("Minecraft.exeとMinecraft.lnk がありません。環境変数[Path]にMinecraft.exeが存在するディレクトリを表記するか、Minecraft.exeがあるディレクトリにMCTB.exeを移動してください。詳細情報：" + exception, "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             pb1.Value = 70;
             Refresh();
@@ -109,19 +117,19 @@ namespace MCTB
             Refresh();
             pb1.Value = 50;
             Refresh();
-            text3.Text = @"C:\Users\【ユーザー名】\AppData\Roaming\.minecraft";
+            text3.Text = @"C:\Users\" + Environment.UserName + @"\AppData\Roaming\.minecraft";
             pb1.Value = 60;
             Refresh();
-            text4.Text = @"C:\Usets\【ユーザー名】\Downloads\【ファイル名】.exe";
+            text4.Text = @"C:\Usets\" + Environment.UserName + @"\Downloads\[ファイル名].exe";
             pb1.Value = 70;
             Refresh();
-            text5.Text = @"C:\Users\【ユーザー名】\AppData\Roaming\.minecraft\saves\【ワールドの名前】";
+            text5.Text = @"C:\Users\" + Environment.UserName + @"\AppData\Roaming\.minecraft\saves\【ワールドの名前】";
             pb1.Value = 80;
             Refresh();
             text6.Text = @"(ワールド名を入力してください)";
             pb1.Value = 90;
             Refresh();
-            text7.Text = @"C:\Users\【ユーザー名】\Downloads\MinecraftServer\【Minecraftサーバー】";
+            text7.Text = @"C:\Users\" + Environment.UserName + @"\Downloads\MinecraftServer\【Minecraftサーバー】.jar";
             button5.Enabled = true;
             pb1.Value = 100;
             Refresh();
@@ -416,59 +424,65 @@ namespace MCTB
 
         private void button12_Click(object sender, EventArgs e)
         {
-            pb1.Value = 0;
-            Refresh();
-            string source = @text3.Text+@"\saves\"+text6.Text;
-            pb1.Value = 16;
-            Refresh();
-            string worldname = @text5.Text + "_バックアップ復元";
-            string oldbakname = @text5.Text + "_バックアップ";
-            pb1.Value = 32;
-            Refresh();
-            string leveldata = worldname + @"\level\level.dat";
-            pb1.Value = 48;
-            Refresh();
-            string worlddata = worldname + @"\level.dat";
-            pb1.Value = 60;
-            Refresh();
-            MessageBox.Show("MinecraftルートパスとバックアップパスのMinecraftルートを変更しないでください！", "警告", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            pb1.Value = 80;
-            Refresh();
-            if (MessageBox.Show("バックアップの復元を開始します。よろしいですか？", "確認", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+            try
             {
-                while (true)
-                {
-                    try
-                    {
-                        Directory.CreateDirectory(worldname);
-                        FileSystem.CopyDirectory(source, worldname);
-                        FileSystem.DeleteDirectory(oldbakname, DeleteDirectoryOption.DeleteAllContents);
-                        File.Copy(leveldata, worlddata, true);
-                        break;
-                    }
+                pb1.Value = 0;
+                Update();
+                string source = @text3.Text + @"\saves\" + text6.Text;
+                pb1.Value = 16;
+                Update();
+                string worldname = @text5.Text + "_バックアップ復元";
+                string oldbakname = @text5.Text + "_バックアップ";
+                pb1.Value = 32;
+                Update();
+                string leveldata = worldname + @"\level\level.dat";
+                pb1.Value = 48;
+                Update();
+                string worlddata = worldname + @"\level.dat";
+                pb1.Value = 60;
 
-                    catch (Exception)
+                Update();
+                MessageBox.Show("MinecraftルートパスとバックアップパスのMinecraftルートを変更しないでください！", "警告", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                pb1.Value = 80;
+                Update();
+                if (MessageBox.Show("バックアップの復元を開始します。よろしいですか？", "確認", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                {
+                    while (true)
                     {
-                        if (MessageBox.Show("エラーが発生しました。パスの指定が間違っている可能性があります。", "エラーが発生しました", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error) == DialogResult.Retry)
+                        try
                         {
-                            continue;
-                        }
-                        else
-                        {
+                            Directory.CreateDirectory(worldname);
+                            FileSystem.CopyDirectory(source, worldname);
+                            FileSystem.DeleteDirectory(oldbakname, DeleteDirectoryOption.DeleteAllContents);
+                            File.Copy(leveldata, worlddata, true);
                             break;
+                        }
+
+                        catch (Exception)
+                        {
+                            if (MessageBox.Show("エラーが発生しました。パスの指定が間違っている可能性があります。", "エラーが発生しました", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error) == DialogResult.Retry)
+                            {
+                                continue;
+                            }
+                            else
+                            {
+                                break;
+                            }
                         }
                     }
                 }
-            };
-            pb1.Value = 100;
-            Refresh();
-
+                pb1.Value = 100;
+                Update();
+            }
+            catch
+            {
+                MessageBox.Show("処理中に不明なエラーが発生しました。", "処理エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void button13_Click(object sender, EventArgs e)
         {
             Close();
-            
         }
 
         private void button14_Click(object sender, EventArgs e)
@@ -512,12 +526,12 @@ namespace MCTB
         private void text5_TextChanged(object sender, EventArgs e)
         {
             
-            
+            // ダミー
         }
 
         private void text4_TextChanged(object sender, EventArgs e)
         {
-            
+            // ダミー
         }
 
         private void text2_TextChanged(object sender, EventArgs e)
@@ -645,18 +659,17 @@ namespace MCTB
 
         private void label3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            FolderBrowserDialog f = new FolderBrowserDialog();
-            f.RootFolder = Environment.SpecialFolder.MyComputer;
-            f.Description = "ディレクトリーを指定してください。";
-            f.ShowNewFolderButton = true;
-            if (f.ShowDialog() == DialogResult.OK)
+            var f = new CommonOpenFileDialog();
+            f.DefaultDirectory = @"C:\Users\" + Environment.UserName + @"\AppData\.minecraft\saves";
+            f.EnsureReadOnly = false;
+            f.AllowNonFileSystemItems = false;
+            f.IsFolderPicker = true;
+            var Result = f.ShowDialog();
+            if (Result == CommonFileDialogResult.Ok)
             {
-                text5.Text = f.SelectedPath;
+                text5.Text = f.FileName;
             }
-            else
-            {
-                f.Dispose();
-            }
+            f.Dispose();
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -702,23 +715,43 @@ namespace MCTB
 
         private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            FolderBrowserDialog f = new FolderBrowserDialog();
-            f.RootFolder = Environment.SpecialFolder.MyComputer;
-            f.Description = "ディレクトリーを指定してください。";
-            f.ShowNewFolderButton = true;
-            if (f.ShowDialog() == DialogResult.OK)
+            
+            var f = new CommonOpenFileDialog();
+            f.DefaultDirectory = @"C:\Users\" + @Environment.UserName;
+            f.EnsureReadOnly = false;
+            f.AllowNonFileSystemItems = false;
+            f.IsFolderPicker = true;
+            var Result = f.ShowDialog();
+            if(Result == CommonFileDialogResult.Ok)
             {
-                text3.Text = f.SelectedPath;
+                text3.Text = f.FileName;
             }
-            else
-            {
-                f.Dispose();
-            }
+            f.Dispose();
         }
 
         private void text7_TextChanged(object sender, EventArgs e)
         {
             
+        }
+
+        private void label6_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void linkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            var f = new CommonOpenFileDialog();
+            f.DefaultDirectory = @"C:\Users\" + @Environment.UserName + @"\AppData\.minecraft\saves";
+            f.EnsureReadOnly = false;
+            f.AllowNonFileSystemItems = false;
+            f.IsFolderPicker = true;
+            var Result = f.ShowDialog();
+            if (Result == CommonFileDialogResult.Ok)
+            {
+                text6.Text = f.FileName;
+            }
+            f.Dispose();
         }
     }
 }
