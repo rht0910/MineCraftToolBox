@@ -60,6 +60,8 @@ namespace MCTB
             Refresh();
             string path1 = "C:\\Users\\" + Environment.UserName + "\\Desktop\\Minecraft.exe";
             string path2 = "C:\\Users\\" + Environment.UserName + "\\Desktop\\Minecraft.lnk";
+            string path3 = "Minecraft.exe"; // Reserved
+            string path4 = "Minecraft.lnk"; // Reserved
             try
             {
                 Process.Start(path1);
@@ -74,7 +76,7 @@ namespace MCTB
                 {
                     try
                     {
-                        Process.Start(@"C:\Program Files(x86)\Minecraft\MinecraftLauncher.exe");
+                        Process.Start(@"C:\Program Files (x86)\Minecraft\MinecraftLauncher.exe");
                     }
                     catch (Exception exception)
                     {
