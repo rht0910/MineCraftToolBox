@@ -58,19 +58,28 @@ namespace MCTB
             button2.Enabled = false;
             pb1.Value = 40;
             Refresh();
+            string path1 = "C:\\Users\\" + Environment.UserName + "\\Desktop\\Minecraft.exe";
+            string path2 = "C:\\Users\\" + Environment.UserName + "\\Desktop\\Minecraft.lnk";
             try
             {
-                Process.Start("Minecraft.exe");
+                Process.Start(path1);
             }
             catch
             {
                 try
                 {
-                    Process.Start("Minecraft.lnk");
+                    Process.Start(path2);
                 }
-                catch (Exception exception)
+                catch
                 {
-                    MessageBox.Show("Minecraft.exeとMinecraft.lnk がありません。環境変数[Path]にMinecraft.exeが存在するディレクトリを表記するか、Minecraft.exeがあるディレクトリにMCTB.exeを移動してください。詳細情報：" + exception, "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    try
+                    {
+                        Process.Start(@"C:\Program Files(x86)\Minecraft\MinecraftLauncher.exe");
+                    }
+                    catch (Exception exception)
+                    {
+                        MessageBox.Show("Minecraft.exe と Minecraft.lnk と MinecraftLauncher.exe がありません。環境変数[Path]にMinecraft.exeが存在するディレクトリを表記するか、Minecraft.exeがあるディレクトリにMCTB.exeを移動してください。詳細情報：" + exception, "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
             pb1.Value = 70;
