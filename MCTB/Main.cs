@@ -28,6 +28,7 @@ namespace MCTB
                 try
                 {
                     Process.Start("https://minecraft.net/ja/");
+                    break;
                 }
 
                 catch(Exception)
@@ -104,6 +105,7 @@ namespace MCTB
             try
             {
                 Process.Start(mcconfig);
+                
             }
             catch(Exception)
             {
@@ -159,6 +161,7 @@ namespace MCTB
             try
             {
                 Process.Start(mcmods);
+                
             }
             catch (Exception)
             {
@@ -181,6 +184,7 @@ namespace MCTB
                 try
                 {
                     Process.Start("http://www26.atwiki.jp/minecraft/");
+                    break;
                 }
 
                 catch (Exception)
@@ -299,6 +303,7 @@ namespace MCTB
                 try
                 {
                     Process.Start(killer, args);
+                    break;
                 }
 
                 catch(Exception)
@@ -508,6 +513,7 @@ namespace MCTB
                 try
                 {
                     Process.Start("http://minecraft-ja.gamepedia.com/");
+                    break;
                 }
 
                 catch (Exception)
@@ -557,7 +563,7 @@ namespace MCTB
 
         private void pb1_Click(object sender, EventArgs e)
         {
-            //ダミー
+            
         }
 
         private void label2_Click(object sender, EventArgs e)
