@@ -1,12 +1,13 @@
-﻿using System;
+﻿using Microsoft;
+using Microsoft.VisualBasic.FileIO;
+using Microsoft.WindowsAPICodePack.Dialogs;
+using System;
 using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
 using System.Threading;
 using System.Windows.Forms;
-using Microsoft.VisualBasic.FileIO;
-using Microsoft.WindowsAPICodePack.Dialogs;
-    
+
 namespace MCTB
 {
     public partial class Main : Form
@@ -23,6 +24,7 @@ namespace MCTB
             button1.Enabled = false;
             pb1.Value = 30;
             Refresh();
+
             while (true)
             {
                 try
@@ -563,7 +565,7 @@ namespace MCTB
 
         private void pb1_Click(object sender, EventArgs e)
         {
-            
+            // ダミー
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -769,6 +771,37 @@ namespace MCTB
                 text6.Text = f.FileName;
             }
             f.Dispose();
+        }
+
+        private void button17_Click(object sender, EventArgs e)
+        {
+            pb1.Value = 0;
+            Refresh();
+            button4.Enabled = false;
+            pb1.Value = 40;
+            Refresh();
+            string mcscr = text3.Text + @"\screenshots";
+            pb1.Value = 80;
+            Refresh();
+            try
+            {
+                Process.Start(mcscr);
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Minecraftルートパスを入力するところが空欄か、modsフォルダが作成されていません。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            pb1.Value = 100;
+            Refresh();
+            button4.Enabled = true;
+        }
+
+        private void button18_Click(object sender, EventArgs e)
+        {
+            Trubleshooting s_form = new Trubleshooting();
+            s_form.ShowDialog (this);
+            
         }
     }
 }

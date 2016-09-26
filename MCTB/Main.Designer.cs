@@ -57,6 +57,8 @@
             this.linkLabel3 = new System.Windows.Forms.LinkLabel();
             this.text6 = new System.Windows.Forms.TextBox();
             this.linkLabel4 = new System.Windows.Forms.LinkLabel();
+            this.button17 = new System.Windows.Forms.Button();
+            this.button18 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -133,7 +135,7 @@
             // 
             this.text3.Location = new System.Drawing.Point(158, 190);
             this.text3.Name = "text3";
-            this.text3.Size = new System.Drawing.Size(485, 19);
+            this.text3.Size = new System.Drawing.Size(587, 19);
             this.text3.TabIndex = 14;
             this.text3.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
@@ -151,7 +153,7 @@
             // 
             this.text4.Location = new System.Drawing.Point(158, 165);
             this.text4.Name = "text4";
-            this.text4.Size = new System.Drawing.Size(485, 19);
+            this.text4.Size = new System.Drawing.Size(587, 19);
             this.text4.TabIndex = 17;
             this.text4.TextChanged += new System.EventHandler(this.text4_TextChanged);
             // 
@@ -179,7 +181,7 @@
             // 
             this.text5.Location = new System.Drawing.Point(158, 140);
             this.text5.Name = "text5";
-            this.text5.Size = new System.Drawing.Size(485, 19);
+            this.text5.Size = new System.Drawing.Size(587, 19);
             this.text5.TabIndex = 21;
             this.text5.TextChanged += new System.EventHandler(this.text5_TextChanged);
             // 
@@ -207,14 +209,14 @@
             // 
             this.pb1.Location = new System.Drawing.Point(543, 23);
             this.pb1.Name = "pb1";
-            this.pb1.Size = new System.Drawing.Size(100, 23);
+            this.pb1.Size = new System.Drawing.Size(202, 23);
             this.pb1.TabIndex = 26;
             this.pb1.Click += new System.EventHandler(this.pb1_Click);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(551, 8);
+            this.label7.Location = new System.Drawing.Point(601, 8);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(87, 12);
             this.label7.TabIndex = 27;
@@ -225,7 +227,7 @@
             // 
             this.button13.Location = new System.Drawing.Point(418, 52);
             this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(225, 36);
+            this.button13.Size = new System.Drawing.Size(327, 36);
             this.button13.TabIndex = 28;
             this.button13.Text = "終了";
             this.button13.UseVisualStyleBackColor = true;
@@ -245,7 +247,7 @@
             // 
             this.text7.Location = new System.Drawing.Point(158, 94);
             this.text7.Name = "text7";
-            this.text7.Size = new System.Drawing.Size(485, 19);
+            this.text7.Size = new System.Drawing.Size(587, 19);
             this.text7.TabIndex = 31;
             this.text7.TextChanged += new System.EventHandler(this.text7_TextChanged);
             // 
@@ -317,7 +319,7 @@
             // 
             this.text6.Location = new System.Drawing.Point(158, 118);
             this.text6.Name = "text6";
-            this.text6.Size = new System.Drawing.Size(485, 19);
+            this.text6.Size = new System.Drawing.Size(587, 19);
             this.text6.TabIndex = 38;
             // 
             // linkLabel4
@@ -331,12 +333,35 @@
             this.linkLabel4.Text = "ワールド名(フォルダ名)";
             this.linkLabel4.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel4_LinkClicked);
             // 
-            // Form1
+            // button17
+            // 
+            this.button17.Location = new System.Drawing.Point(651, 215);
+            this.button17.Name = "button17";
+            this.button17.Size = new System.Drawing.Size(94, 35);
+            this.button17.TabIndex = 40;
+            this.button17.Text = "スクリーンショットを開く";
+            this.button17.UseVisualStyleBackColor = true;
+            this.button17.Click += new System.EventHandler(this.button17_Click);
+            // 
+            // button18
+            // 
+            this.button18.ForeColor = System.Drawing.Color.Blue;
+            this.button18.Location = new System.Drawing.Point(651, 256);
+            this.button18.Name = "button18";
+            this.button18.Size = new System.Drawing.Size(94, 37);
+            this.button18.TabIndex = 41;
+            this.button18.Text = "トラブルシューティング";
+            this.button18.UseVisualStyleBackColor = true;
+            this.button18.Click += new System.EventHandler(this.button18_Click);
+            // 
+            // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(655, 306);
+            this.ClientSize = new System.Drawing.Size(757, 306);
+            this.Controls.Add(this.button18);
+            this.Controls.Add(this.button17);
             this.Controls.Add(this.linkLabel4);
             this.Controls.Add(this.text6);
             this.Controls.Add(this.linkLabel3);
@@ -366,7 +391,7 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Form1";
+            this.Name = "Main";
             this.Text = "マインクラフト色々ツール";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
@@ -404,6 +429,8 @@
         private System.Windows.Forms.LinkLabel linkLabel3;
         private System.Windows.Forms.TextBox text6;
         private System.Windows.Forms.LinkLabel linkLabel4;
+        private System.Windows.Forms.Button button17;
+        private System.Windows.Forms.Button button18;
     }
 }
 
