@@ -83,7 +83,7 @@ namespace MCTB
                     }
                     catch (Exception exception)
                     {
-                        MessageBox.Show("Minecraft.exe と Minecraft.lnk と MinecraftLauncher.exe がありません。環境変数[Path]にMinecraft.exeが存在するディレクトリを表記するか、Minecraft.exeがあるディレクトリにMCTB.exeを移動してください。詳細情報：" + exception, "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("エラーが発生しました。\nマインクラフトが正常にインストールされていない可能性があります。インストールの確認後、再度実行してください。\n詳細情報：\n" + exception, "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
@@ -500,6 +500,7 @@ namespace MCTB
 
         private void button13_Click(object sender, EventArgs e)
         {
+            Dispose();
             Close();
         }
 

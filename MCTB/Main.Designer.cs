@@ -77,7 +77,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(140, 78);
             this.button2.TabIndex = 1;
-            this.button2.Text = "Minecraftランチャーを起動する(ランチャーがあるところから実行してください。)";
+            this.button2.Text = "Minecraftランチャーを起動する";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -229,7 +229,7 @@
             this.button13.Name = "button13";
             this.button13.Size = new System.Drawing.Size(327, 36);
             this.button13.TabIndex = 28;
-            this.button13.Text = "終了";
+            this.button13.Text = "閉じる";
             this.button13.UseVisualStyleBackColor = true;
             this.button13.Click += new System.EventHandler(this.button13_Click);
             // 
