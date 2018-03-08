@@ -6,15 +6,13 @@ using System.Threading;
 using System.Windows.Forms;
 using Microsoft.VisualBasic.FileIO;
 using Microsoft.WindowsAPICodePack.Dialogs;
-    
+using Troubleshooting;
+
 namespace MCTB
 {
     public partial class Main : Form
     {
-        public Main()
-        {
-            InitializeComponent();
-        }
+        public Main() => InitializeComponent();
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -61,8 +59,6 @@ namespace MCTB
             Refresh();
             string path1 = "C:\\Users\\" + Environment.UserName + "\\Desktop\\Minecraft.exe";
             string path2 = "C:\\Users\\" + Environment.UserName + "\\Desktop\\Minecraft.lnk";
-            string path3 = "Minecraft.exe"; // Reserved
-            string path4 = "Minecraft.lnk"; // Reserved
             try
             {
                 Process.Start(path1);
@@ -118,7 +114,17 @@ namespace MCTB
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + "\\Troubleshooting.dll"))
+            {
+                if (!Test())
+                {
+                    if (MaintenanceButton.Enabled == true)
+                    {
+                        MaintenanceButton.Enabled = false;
+                        MessageBox.Show("有効なTroubleshooting.dllが見つかりません。メンテナンス機能は利用できません。", "メンテナンス機能", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+            }
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -359,7 +365,7 @@ namespace MCTB
             string killprocess1 = "-T -F -IM Minecraft.exe";
             pb1.Value = 48;
             Refresh();
-            string killprocess2 = "-T -F -IM java.exe";
+            string killprocess2 = "-T -F -IM MinecraftLauncher.exe";
             pb1.Value = 64;
             Refresh();
             while (true)
@@ -388,7 +394,7 @@ namespace MCTB
             Refresh();
         }
 
-        private void button11_Click(object sender, EventArgs e)
+        private void Button11_Click(object sender, EventArgs e)
         {
             pb1.Value = 0;
             Refresh();
@@ -646,6 +652,10 @@ namespace MCTB
             button16.Enabled = false;
             pb1.Value = 40;
             Refresh();
+            if(text3.Text == "")
+            {
+                text3.Text = $"{Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)}\\AppData\\Roaming\\.minecraft";
+            }
             string mcroot = text3.Text;
             pb1.Value = 80;
             Refresh();
@@ -676,11 +686,13 @@ namespace MCTB
 
         private void label3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var f = new CommonOpenFileDialog();
-            f.DefaultDirectory = @"C:\Users\" + Environment.UserName + @"\AppData\.minecraft\saves";
-            f.EnsureReadOnly = false;
-            f.AllowNonFileSystemItems = false;
-            f.IsFolderPicker = true;
+            var f = new CommonOpenFileDialog
+            {
+                DefaultDirectory = @"C:\Users\" + Environment.UserName + @"\AppData\.minecraft\saves",
+                EnsureReadOnly = false,
+                AllowNonFileSystemItems = false,
+                IsFolderPicker = true
+            };
             var Result = f.ShowDialog();
             if (Result == CommonFileDialogResult.Ok)
             {
@@ -692,15 +704,17 @@ namespace MCTB
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
 
-            OpenFileDialog f = new OpenFileDialog();
-            f.DefaultExt = "jar";
-            f.ReadOnlyChecked = true;
-            f.AddExtension = true;
-            f.Multiselect = false;
-            f.CheckPathExists = true;
-            f.CheckFileExists = true;
-            f.DereferenceLinks = true;
-            f.FileName = "*.*";
+            OpenFileDialog f = new OpenFileDialog
+            {
+                DefaultExt = "jar",
+                ReadOnlyChecked = true,
+                AddExtension = true,
+                Multiselect = false,
+                CheckPathExists = true,
+                CheckFileExists = true,
+                DereferenceLinks = true,
+                FileName = "*.*"
+            };
             if (f.ShowDialog() == DialogResult.OK)
             {
                 text7.Text = f.FileName;
@@ -713,13 +727,15 @@ namespace MCTB
 
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            OpenFileDialog f = new OpenFileDialog();
-            f.DefaultExt = "exe";
-            f.Multiselect = true;
-            f.CheckPathExists = true;
-            f.CheckFileExists = true;
-            f.DereferenceLinks = true;
-            f.FileName = "*.exe";
+            OpenFileDialog f = new OpenFileDialog
+            {
+                DefaultExt = "exe",
+                Multiselect = true,
+                CheckPathExists = true,
+                CheckFileExists = true,
+                DereferenceLinks = true,
+                FileName = "*.exe"
+            };
             if (f.ShowDialog() == DialogResult.OK)
             {
                 text4.Text = f.FileName;
@@ -732,12 +748,14 @@ namespace MCTB
 
         private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            
-            var f = new CommonOpenFileDialog();
-            f.DefaultDirectory = @"C:\Users\" + @Environment.UserName;
-            f.EnsureReadOnly = false;
-            f.AllowNonFileSystemItems = false;
-            f.IsFolderPicker = true;
+
+            var f = new CommonOpenFileDialog
+            {
+                DefaultDirectory = @"C:\Users\" + @Environment.UserName,
+                EnsureReadOnly = false,
+                AllowNonFileSystemItems = false,
+                IsFolderPicker = true
+            };
             var Result = f.ShowDialog();
             if(Result == CommonFileDialogResult.Ok)
             {
@@ -758,17 +776,60 @@ namespace MCTB
 
         private void linkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var f = new CommonOpenFileDialog();
-            f.DefaultDirectory = @"C:\Users\" + @Environment.UserName + @"\AppData\.minecraft\saves";
-            f.EnsureReadOnly = false;
-            f.AllowNonFileSystemItems = false;
-            f.IsFolderPicker = true;
+            var f = new CommonOpenFileDialog
+            {
+                DefaultDirectory = @"C:\Users\" + @Environment.UserName + @"\AppData\.minecraft\saves",
+                EnsureReadOnly = false,
+                AllowNonFileSystemItems = false,
+                IsFolderPicker = true
+            };
             var Result = f.ShowDialog();
             if (Result == CommonFileDialogResult.Ok)
             {
                 text6.Text = f.FileName;
             }
             f.Dispose();
+        }
+
+        private void button17_Click(object sender, EventArgs e)
+        {
+            var ts = new TroubleShooting();
+            ts.Config(text3.Text);
+            ts.ShowDialog();
+        }
+
+        private void Rescan_Click(object sender, EventArgs e)
+        {
+            if(File.Exists(AppDomain.CurrentDomain.BaseDirectory + "\\Troubleshooting.dll"))
+            {
+                if (Test())
+                {
+                    if (MaintenanceButton.Enabled == false)
+                    {
+                        MaintenanceButton.Enabled = true;
+                        MessageBox.Show("メンテナンス機能が利用可能になりました。", "メンテナンス機能", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                else
+                {
+                    if (MaintenanceButton.Enabled == true)
+                    {
+                        MaintenanceButton.Enabled = false;
+                        MessageBox.Show("有効なTroubleshooting.dllが見つかりません。メンテナンス機能は利用できません。", "メンテナンス機能", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+            }
+        }
+
+        private bool Test()
+        {
+            var ts = new TroubleShooting();
+            if(ts.Test(Text))
+            {
+                return true;
+            } else {
+                return false;
+            }
         }
     }
 }

@@ -57,6 +57,9 @@
             this.linkLabel3 = new System.Windows.Forms.LinkLabel();
             this.text6 = new System.Windows.Forms.TextBox();
             this.linkLabel4 = new System.Windows.Forms.LinkLabel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.MaintenanceButton = new System.Windows.Forms.Button();
+            this.Rescan = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -73,9 +76,9 @@
             // 
             this.button2.Location = new System.Drawing.Point(12, 216);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(140, 78);
+            this.button2.Size = new System.Drawing.Size(140, 77);
             this.button2.TabIndex = 1;
-            this.button2.Text = "Minecraftランチャーを起動する(ランチャーがあるところから実行してください。)";
+            this.button2.Text = "Minecraftランチャーを起動する";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -101,11 +104,11 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(535, 215);
+            this.button5.Location = new System.Drawing.Point(419, 52);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(110, 35);
             this.button5.TabIndex = 10;
-            this.button5.Text = "　　　　　↑　　　　　簡単入力";
+            this.button5.Text = "　　　簡単入力　　　↓";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
@@ -115,7 +118,7 @@
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(110, 34);
             this.button6.TabIndex = 11;
-            this.button6.Text = "Minecraft Wikiを  開く";
+            this.button6.Text = "Minecraft Wiki(@wiki)";
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
@@ -131,7 +134,7 @@
             // 
             // text3
             // 
-            this.text3.Location = new System.Drawing.Point(158, 190);
+            this.text3.Location = new System.Drawing.Point(159, 190);
             this.text3.Name = "text3";
             this.text3.Size = new System.Drawing.Size(485, 19);
             this.text3.TabIndex = 14;
@@ -149,7 +152,7 @@
             // 
             // text4
             // 
-            this.text4.Location = new System.Drawing.Point(158, 165);
+            this.text4.Location = new System.Drawing.Point(159, 165);
             this.text4.Name = "text4";
             this.text4.Size = new System.Drawing.Size(485, 19);
             this.text4.TabIndex = 17;
@@ -177,7 +180,7 @@
             // 
             // text5
             // 
-            this.text5.Location = new System.Drawing.Point(158, 140);
+            this.text5.Location = new System.Drawing.Point(159, 143);
             this.text5.Name = "text5";
             this.text5.Size = new System.Drawing.Size(485, 19);
             this.text5.TabIndex = 21;
@@ -191,7 +194,7 @@
             this.button11.TabIndex = 22;
             this.button11.Text = "Minecraftワールドバックアップ";
             this.button11.UseVisualStyleBackColor = true;
-            this.button11.Click += new System.EventHandler(this.button11_Click);
+            this.button11.Click += new System.EventHandler(this.Button11_Click);
             // 
             // button12
             // 
@@ -205,16 +208,16 @@
             // 
             // pb1
             // 
-            this.pb1.Location = new System.Drawing.Point(543, 23);
+            this.pb1.Location = new System.Drawing.Point(535, 23);
             this.pb1.Name = "pb1";
-            this.pb1.Size = new System.Drawing.Size(100, 23);
+            this.pb1.Size = new System.Drawing.Size(109, 23);
             this.pb1.TabIndex = 26;
             this.pb1.Click += new System.EventHandler(this.pb1_Click);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(551, 8);
+            this.label7.Location = new System.Drawing.Point(542, 8);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(87, 12);
             this.label7.TabIndex = 27;
@@ -223,9 +226,9 @@
             // 
             // button13
             // 
-            this.button13.Location = new System.Drawing.Point(418, 52);
+            this.button13.Location = new System.Drawing.Point(535, 52);
             this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(225, 36);
+            this.button13.Size = new System.Drawing.Size(109, 34);
             this.button13.TabIndex = 28;
             this.button13.Text = "終了";
             this.button13.UseVisualStyleBackColor = true;
@@ -233,17 +236,17 @@
             // 
             // button14
             // 
-            this.button14.Location = new System.Drawing.Point(303, 53);
+            this.button14.Location = new System.Drawing.Point(303, 52);
             this.button14.Name = "button14";
             this.button14.Size = new System.Drawing.Size(109, 34);
             this.button14.TabIndex = 29;
-            this.button14.Text = "Minecraft Wiki(外国製)を開く";
+            this.button14.Text = "Minecraft Wiki(Gamepedia)";
             this.button14.UseVisualStyleBackColor = true;
             this.button14.Click += new System.EventHandler(this.button14_Click);
             // 
             // text7
             // 
-            this.text7.Location = new System.Drawing.Point(158, 94);
+            this.text7.Location = new System.Drawing.Point(159, 93);
             this.text7.Name = "text7";
             this.text7.Size = new System.Drawing.Size(485, 19);
             this.text7.TabIndex = 31;
@@ -253,7 +256,7 @@
             // 
             this.button15.Location = new System.Drawing.Point(158, 216);
             this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(139, 77);
+            this.button15.Size = new System.Drawing.Size(139, 34);
             this.button15.TabIndex = 32;
             this.button15.Text = "Minecraftサーバーを実行";
             this.button15.UseVisualStyleBackColor = true;
@@ -261,11 +264,11 @@
             // 
             // button16
             // 
-            this.button16.Location = new System.Drawing.Point(535, 256);
+            this.button16.Location = new System.Drawing.Point(158, 256);
             this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(109, 37);
+            this.button16.Size = new System.Drawing.Size(139, 37);
             this.button16.TabIndex = 33;
-            this.button16.Text = "Minecraftルートフォルダを開く";
+            this.button16.Text = ".minecraftを開く";
             this.button16.UseVisualStyleBackColor = true;
             this.button16.Click += new System.EventHandler(this.button16_Click);
             // 
@@ -315,7 +318,7 @@
             // 
             // text6
             // 
-            this.text6.Location = new System.Drawing.Point(158, 118);
+            this.text6.Location = new System.Drawing.Point(159, 118);
             this.text6.Name = "text6";
             this.text6.Size = new System.Drawing.Size(485, 19);
             this.text6.TabIndex = 38;
@@ -331,12 +334,43 @@
             this.linkLabel4.Text = "ワールド名(フォルダ名)";
             this.linkLabel4.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel4_LinkClicked);
             // 
-            // Form1
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(551, 12);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(0, 12);
+            this.label1.TabIndex = 27;
+            this.label1.Click += new System.EventHandler(this.label7_Click);
+            // 
+            // MaintenanceButton
+            // 
+            this.MaintenanceButton.Location = new System.Drawing.Point(535, 216);
+            this.MaintenanceButton.Name = "MaintenanceButton";
+            this.MaintenanceButton.Size = new System.Drawing.Size(109, 33);
+            this.MaintenanceButton.TabIndex = 40;
+            this.MaintenanceButton.Text = "メンテナンス画面";
+            this.MaintenanceButton.UseVisualStyleBackColor = true;
+            this.MaintenanceButton.Click += new System.EventHandler(this.button17_Click);
+            // 
+            // Rescan
+            // 
+            this.Rescan.Location = new System.Drawing.Point(535, 256);
+            this.Rescan.Name = "Rescan";
+            this.Rescan.Size = new System.Drawing.Size(108, 37);
+            this.Rescan.TabIndex = 41;
+            this.Rescan.Text = "再スキャン";
+            this.Rescan.UseVisualStyleBackColor = true;
+            this.Rescan.Click += new System.EventHandler(this.Rescan_Click);
+            // 
+            // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(655, 306);
+            this.Controls.Add(this.Rescan);
+            this.Controls.Add(this.MaintenanceButton);
             this.Controls.Add(this.linkLabel4);
             this.Controls.Add(this.text6);
             this.Controls.Add(this.linkLabel3);
@@ -348,6 +382,7 @@
             this.Controls.Add(this.text7);
             this.Controls.Add(this.button14);
             this.Controls.Add(this.button13);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.pb1);
             this.Controls.Add(this.button12);
@@ -366,7 +401,7 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Form1";
+            this.Name = "Main";
             this.Text = "マインクラフト色々ツール";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
@@ -404,6 +439,9 @@
         private System.Windows.Forms.LinkLabel linkLabel3;
         private System.Windows.Forms.TextBox text6;
         private System.Windows.Forms.LinkLabel linkLabel4;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button MaintenanceButton;
+        private System.Windows.Forms.Button Rescan;
     }
 }
 
