@@ -1,0 +1,7 @@
+C:\Users\Owner\Source\Repos\MineCraftToolBox\Troubleshooting\bin\Release\Troubleshooting.dll
+C:\Users\Owner\Source\Repos\MineCraftToolBox\Troubleshooting\bin\Release\Troubleshooting.pdb
+C:\Users\Owner\Source\Repos\MineCraftToolBox\Troubleshooting\obj\Release\Troubleshooting.TroubleShooting.resources
+C:\Users\Owner\Source\Repos\MineCraftToolBox\Troubleshooting\obj\Release\Troubleshooting.csproj.GenerateResource.Cache
+C:\Users\Owner\Source\Repos\MineCraftToolBox\Troubleshooting\obj\Release\Troubleshooting.csproj.CoreCompileInputs.cache
+C:\Users\Owner\Source\Repos\MineCraftToolBox\Troubleshooting\obj\Release\Troubleshooting.dll
+C:\Users\Owner\Source\Repos\MineCraftToolBox\Troubleshooting\obj\Release\Troubleshooting.pdb
